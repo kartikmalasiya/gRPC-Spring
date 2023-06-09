@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+
+option java_multiple_files = true;
+option java_package = "com.techgeeknext.employee";
+
+message EmployeeRequest{
+  string emp_id = 1;
+}
+message EmployeeResponse {
+  string emp_id = 1;
+  string name = 2;
+}
+
+
+message CreateEmployeeRequest {
+  string emp_id = 1;
+  string name = 2;
+}
+
+message CreateEmployeeResponse {
+  string emp_id = 1;
+  string name=2;
+}
+
+message EmployeeUpdateRequest {
+  string empId = 1;
+  string newName = 2;
+}
+
+message EmployeeUpdateResponse {
+  string empId = 1;
+  string name = 2;
+}
+
+message EmployeeDeleteRequest {
+  string empId = 1;
+}
+
+message EmployeeDeleteResponse {
+  string empId = 1;
+  bool success = 2;
+}
+
+service EmployeeDeleteService {
+  rpc DeleteEmployee(EmployeeDeleteRequest) returns (EmployeeDeleteResponse) {}
+}
+
+service EmployeeService {
+  rpc getEmployee(EmployeeRequest) returns (EmployeeResponse) {};
+//  rpc CreateEmployee(CreateEmployeeRequest) returns (CreateEmployeeResponse){};
+//
+//  rpc GetEmployee(GetEmployeeRequest) returns (GetEmployeeResponse);
+//  rpc UpdateEmployee(UpdateEmployeeRequest) returns (UpdateEmployeeResponse);
+//  rpc DeleteEmployee(DeleteEmployeeRequest) returns (DeleteEmployeeResponse);
+}
+
+service CreateEmployeeService{
+  rpc CreateEmployee(CreateEmployeeRequest) returns (CreateEmployeeResponse){};
+}
+
+
+
+service EmployeeUpdateService {
+  rpc UpdateEmployee(EmployeeUpdateRequest) returns (EmployeeUpdateResponse) {}
+}
